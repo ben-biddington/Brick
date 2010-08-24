@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brick", "Brick.csproj", "{B3496EC2-5A6C-48BD-9EE6-CF2D333ED572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brick", "src\Brick\Brick.csproj", "{B3496EC2-5A6C-48BD-9EE6-CF2D333ED572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brick.Unit.Tests", "..\src\Brick.Unit.Tests\Brick.Unit.Tests.csproj", "{794E08EE-B7E6-4B86-B6B8-C91303F596C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brick.Unit.Tests", "src\Brick.Unit.Tests\Brick.Unit.Tests.csproj", "{794E08EE-B7E6-4B86-B6B8-C91303F596C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
