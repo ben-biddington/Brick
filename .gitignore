@@ -1,0 +1,10 @@
+bin/
+src/**/bin/
+test/**/bin/
+debug/
+obj/
+out/
+*.suo
+*.html
+*.user
+_ReSharper.*
