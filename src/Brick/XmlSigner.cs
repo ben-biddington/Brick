@@ -1,6 +1,7 @@
 using System;
 using System.Xml;
 using Brick.DateAndTime;
+using Brick.Hashing;
 
 namespace Brick {
     public class XmlSigner : IXmlSigner {
