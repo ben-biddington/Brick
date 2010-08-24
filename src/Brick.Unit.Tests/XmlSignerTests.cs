@@ -5,21 +5,20 @@ using NUnit.Framework;
 
 namespace Brick.Unit.Tests {
 	[TestFixture]
-    public class XmlSignerTests {
+    public class XmlSignerTests : UnitTest {
         private const String EPUB_FILE = @"res\theArtOfWar.epub";
 		private const String PASSWORD = "barada";
 	    private readonly DateTime _anyExpirationTime = new DateTime(2010, 02, 16, 11, 24, 41);
 
 	    private XmlDocument Doc { get; set; }
 
-	    [SetUp]
-		public void SetUp() {
-			Doc = CreatePackagingRequest(EPUB_FILE);
+	    protected override void BeforeEach() {
+			Doc = NewPackagingRequest(EPUB_FILE);
 		}
-
+	
 		[Test]
         public void Check_hash() {
-            var doc = CreatePackagingRequest(EPUB_FILE);
+            var doc = NewPackagingRequest(EPUB_FILE);
 
         	const String nonce = "TaPMeKEjVEOJrFm/KLG9AA==";
             var expirationTime = new DateTime(2010, 02, 16, 11, 24, 41);
@@ -68,6 +67,7 @@ namespace Brick.Unit.Tests {
 		[Test]
 		public void Sign_returns_a_new_xml_document() {
 			var xmlSigner = new XmlSigner(PASSWORD);
+
             const String nonce = "TaPMeKEjVEOJrFm/KLG9AA==";
 
 			var result = xmlSigner.Sign(Doc, nonce, _anyExpirationTime);
@@ -79,7 +79,7 @@ namespace Brick.Unit.Tests {
 			);
 		}
 
-        private static XmlDocument CreatePackagingRequest(String file) {
+        private static XmlDocument NewPackagingRequest(String file) {
             var doc = new XmlDocument();
 			var package = doc.CreateElement("package", NamespaceUris.ADEPT);
             doc.AppendChild(package);

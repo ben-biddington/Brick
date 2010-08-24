@@ -50,12 +50,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributeComparerTests.cs" />
-    <Compile Include="W3CDateStringTests.cs" />
+    <Compile Include="UnitTest.cs" />
+    <Compile Include="W3CDateStringExamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlSignerTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Brick\Brick.csproj">
+    <ProjectReference Include="..\Brick\Brick.csproj">
       <Project>{B3496EC2-5A6C-48BD-9EE6-CF2D333ED572}</Project>
       <Name>Brick</Name>
     </ProjectReference>
