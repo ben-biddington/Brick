@@ -8,7 +8,7 @@ namespace Brick.Unit.Tests {
         private const int GREATER_THAN = 1;
         private const int LESS_THAN = -1;
         private const int EQUAL = 0;
-		XmlDocument xmlDocument;
+		private XmlDocument xmlDocument;
 
 		protected override void BeforeEach() {
 			xmlDocument = new XmlDocument();
