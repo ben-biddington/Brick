@@ -92,8 +92,7 @@ namespace Brick.Unit.Tests {
         }
 
         private static String Base64EncodeEbook(String file) {
-            var data = File.ReadAllBytes(file);
-            return Convert.ToBase64String(data);
+        	return Convert.ToBase64String(File.ReadAllBytes(file));
         }
     }
 }
