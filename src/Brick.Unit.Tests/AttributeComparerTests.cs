@@ -16,7 +16,7 @@ namespace Brick.Unit.Tests {
 
         [Test]
         public void Attributes_should_be_considered_the_same_if_local_name_matches() {
-            var attribute = xmlDocument.CreateAttribute("anAttribute");
+			var attribute = NewAttribute("anAttribute");
             
             var result = new AttributeComparer().Compare(attribute, attribute);
 
@@ -25,8 +25,8 @@ namespace Brick.Unit.Tests {
 
         [Test]
         public void Attributes_should_be_compared_alphabetically() {
-            var left = xmlDocument.CreateAttribute("aaaa");
-            var right = xmlDocument.CreateAttribute("bbbb");
+			var left = NewAttribute("aaaa");
+			var right = NewAttribute("bbbb");
 
             var result = new AttributeComparer().Compare(left, right);
 
@@ -35,8 +35,8 @@ namespace Brick.Unit.Tests {
 
         [Test]
         public void Attributes_should_be_compared_alphabetically_2() {
-            var left = xmlDocument.CreateAttribute("bbbb");
-            var right = xmlDocument.CreateAttribute("aaaa");
+			var left = NewAttribute("bbbb");
+			var right = NewAttribute("aaaa");
 
             var result = new AttributeComparer().Compare(left, right);
 
@@ -45,8 +45,8 @@ namespace Brick.Unit.Tests {
 
         [Test]
         public void Attributes_should_be_compared_alphabetically_3() {
-            var left = xmlDocument.CreateAttribute("aaaa");
-            var right = xmlDocument.CreateAttribute("aaaaa");
+			var left = NewAttribute("aaaa");
+			var right = NewAttribute("aaaaa");
 
             var result = new AttributeComparer().Compare(left, right);
 
@@ -55,12 +55,16 @@ namespace Brick.Unit.Tests {
 
         [Test]
         public void Attributes_should_be_compared_alphabetically_4() {
-            var left = xmlDocument.CreateAttribute("aaaaa");
-            var right = xmlDocument.CreateAttribute("aaaa");
+			var left = NewAttribute("aaaaa");
+			var right = NewAttribute("aaaa");
 
             var result = new AttributeComparer().Compare(left, right);
 
             Assert.That(result, Is.EqualTo(GREATER_THAN));
         }
+
+		private XmlAttribute NewAttribute(string value) {
+			return xmlDocument.CreateAttribute(value);
+		}
     }
 }
