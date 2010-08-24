@@ -1,6 +1,6 @@
 using System.Xml;
 
-namespace Brick {
+namespace Brick.Xml.Signing {
     public interface IXmlSigner {
         XmlDocument Sign(XmlDocument message);
     }

@@ -2,6 +2,7 @@ using System;
 using System.Xml;
 using Brick.DateAndTime;
 using Brick.Hashing;
+using Brick.Xml.Signing;
 
 namespace Brick {
     public class XmlSigner : IXmlSigner {
@@ -13,16 +14,12 @@ namespace Brick {
 
         public XmlDocument Sign(XmlDocument message) {
         	return Sign(message, NewNonce(), DefaultExpiresAt);
-        }
-
-    	private String NewNonce() {
-    		return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
-    	}
+        }    
 
     	public XmlDocument Sign(
             XmlDocument message,
             String nonce,
-            DateTime expirationTime
+            DateTime expiresAt
         ) {
             if (message.DocumentElement == null)
                 throw new ArgumentException("No root node in xdoc.");
@@ -32,7 +29,7 @@ namespace Brick {
             SignMessage(
 				copy.DocumentElement, 
 				Convert.FromBase64String(nonce), 
-				expirationTime,
+				expiresAt,
                 new SharedSecret().From(_password)
 			);
 
@@ -73,6 +70,10 @@ namespace Brick {
 
             message.AppendChild(child);
         }
+
+		private String NewNonce() {
+			return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+		}
 
 		private static DateTime DefaultExpiresAt {
 			get { return DateTime.Now.AddMinutes(15); }
